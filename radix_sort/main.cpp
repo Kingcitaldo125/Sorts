@@ -1,8 +1,7 @@
-#include "stdafx.h"
-
+#include <algorithm>
 #include <array>
-
-#include "Header.h"
+#include <iostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
