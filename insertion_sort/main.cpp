@@ -3,6 +3,16 @@
 #include <vector>
 
 using std::cout;
+using std::endl;
+
+void print_vector(const std::vector<int>& mints)
+{
+	for (auto& v : mints)
+	{
+		cout << v << " ";
+	}
+	cout << '\n';
+}
 
 void insertion_sort(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
@@ -31,11 +41,9 @@ int main()
 
     insertion_sort(mints.begin(), mints.end());
 
-    for(auto& i : mints)
-    {
-        cout << i << " ";
-    }
-    cout << '\n';
+    print_vector(mints);
+
+    cout << "is_sorted: " << std::boolalpha << std::is_sorted(mints.begin(), mints.end()) << endl;
 
     return 0;
 }
