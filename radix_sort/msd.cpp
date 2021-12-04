@@ -7,7 +7,7 @@
 using std::cout;
 using std::endl;
 
-std::vector<int> rec_sort(std::vector<int> mints, const int idx = 0)
+std::vector<int> radix_sort_msd(const std::vector<int>& mints, const int idx = 0)
 {
 	std::array<std::vector<int>, 10> holder;
 	std::vector<int> singles;
@@ -22,7 +22,7 @@ std::vector<int> rec_sort(std::vector<int> mints, const int idx = 0)
 		auto mstr = std::to_string(m);
 		auto mstr_size = mstr.size();
 
-		if (mstr_size < largest_size || idx >= mstr_size)
+		if (mstr_size < largest_size)
 		{
 			singles.push_back(m);
 			continue;
@@ -31,33 +31,19 @@ std::vector<int> rec_sort(std::vector<int> mints, const int idx = 0)
 		holder.at(std::stoi(std::string(1, mstr.at(idx)))).push_back(m);
 	}
 
-	singles = rec_sort(singles, idx);
+	singles = radix_sort_msd(singles, idx);
 
 	for (auto vector : holder)
 	{
 		if (vector.empty())
 			continue;
 
-		auto rec_vec = rec_sort(vector, idx + 1);
+		auto rec_vec = radix_sort_msd(vector, idx + 1);
 		for (auto& i : rec_vec)
 			singles.push_back(i);
 	}
 
 	return singles;
-}
-
-std::vector<int> radix_sort_msd(std::vector<int> mints)
-{
-	std::vector<int> main_vec;
-
-	auto res = rec_sort(mints);
-
-	for (const auto& r : res)
-	{
-		main_vec.push_back(r);
-	}
-
-	return main_vec;
 }
 
 int main()
