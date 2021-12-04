@@ -52,15 +52,13 @@ int main()
 
 	mints = radix_sort_msd(mints);
 
-	int i = 0;
 	for (auto& v : mints)
 	{
 		cout << v << " ";
-		++i;
 	}
 	cout << '\n';
 
-	cout << i << " items\n";
+	cout << mints.size() << " items\n";
 	cout << "is_sorted: " << std::boolalpha << std::is_sorted(mints.begin(), mints.end()) << endl;
 
 	return 0;
