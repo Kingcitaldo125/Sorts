@@ -6,28 +6,6 @@
 using std::cout;
 using std::endl;
 
-void print_vector(const std::vector<int>& mints);
-
-void print_array(const std::array<std::vector<int>, 10>& marray)
-{
-	int j = -1;
-	for (auto& i : marray)
-	{
-		cout << ++j << '\n';
-		print_vector(i);
-	}
-	cout << '\n';
-}
-
-void print_vector(const std::vector<int>& mints)
-{
-	for (auto& i : mints)
-	{
-		cout << i << " ";
-	}
-	cout << endl;
-}
-
 std::vector<int> radix_sort(const std::vector<int>& vecc)
 {
 	std::array<std::vector<int>, 10> marray;
@@ -85,15 +63,13 @@ int main()
 
 	mints = radix_sort(mints);
 
-	int i = 0;
 	for (auto& v : mints)
 	{
 		cout << v << " ";
-		++i;
 	}
 	cout << '\n';
 
-	cout << i << " items\n";
+	cout << mints.size() << " items\n";
 	cout << "is_sorted: " << std::boolalpha << std::is_sorted(mints.begin(), mints.end()) << endl;
 
 	return 0;
