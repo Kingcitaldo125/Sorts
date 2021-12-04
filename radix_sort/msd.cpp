@@ -12,7 +12,10 @@ std::vector<int> radix_sort_msd(const std::vector<int>& mints, const int idx = 0
 	std::array<std::vector<int>, 10> holder;
 	std::vector<int> singles;
 
-	if (mints.size() <= 1 || std::all_of(mints.begin(), mints.end(), [&](auto& i) { return i == mints.at(0); }))
+	if (mints.size() <= 1)
+		return mints;
+
+	if(std::all_of(mints.begin(), mints.end(), [&](auto& i) { return i == mints.at(0); }))
 		return mints;
 
 	std::size_t largest_size = std::to_string(*std::max_element(mints.begin(), mints.end())).size();
@@ -33,13 +36,12 @@ std::vector<int> radix_sort_msd(const std::vector<int>& mints, const int idx = 0
 
 	singles = radix_sort_msd(singles, idx);
 
-	for (auto vector : holder)
+	for (auto& vector : holder)
 	{
 		if (vector.empty())
 			continue;
 
-		auto rec_vec = radix_sort_msd(vector, idx + 1);
-		for (auto& i : rec_vec)
+		for (const auto& i : radix_sort_msd(vector, idx + 1))
 			singles.push_back(i);
 	}
 
