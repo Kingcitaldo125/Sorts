@@ -7,11 +7,10 @@
 using std::cout;
 using std::endl;
 
-template <typename T = unsigned int>
-std::vector<T> radix_sort_msd(const std::vector<T>& mints, const int idx = 0)
+std::vector<unsigned int> radix_sort_msd(const std::vector<unsigned int>& mints, const int idx = 0)
 {
-	std::array<std::vector<T>, 10> holder;
-	std::vector<T> singles;
+	std::array<std::vector<unsigned int>, 10> holder;
+	std::vector<unsigned int> singles;
 
 	if (mints.size() <= 1)
 		return mints;
