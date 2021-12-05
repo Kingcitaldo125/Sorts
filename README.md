@@ -1,2 +1,3 @@
 # Sorts
-Various sorting algorithms
+
+Various sorting algorithms written in C++.
