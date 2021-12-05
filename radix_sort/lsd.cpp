@@ -7,13 +7,12 @@
 using std::cout;
 using std::endl;
 
-template <typename T = unsigned int>
-std::vector<T> radix_sort_lsd(const std::vector<T>& vecc)
+std::vector<unsigned int> radix_sort_lsd(const std::vector<unsigned int>& vecc)
 {
-	std::array<std::vector<T>, 10> marray;
-	std::vector<T> mints(vecc.begin(), vecc.end());
+	std::array<std::vector<unsigned int>, 10> marray;
+	std::vector<unsigned int> mints(vecc.begin(), vecc.end());
 
-	marray.fill(std::vector<T>());
+	marray.fill(std::vector<unsigned int>());
 
 	int i = 0;
 	bool processed = true;
