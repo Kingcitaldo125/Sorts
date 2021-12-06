@@ -45,10 +45,6 @@ std::vector<unsigned int> radix_sort_lsd(const std::vector<unsigned int>& vecc)
 		{
 			for (auto& v : vec)
 				mints.push_back(v);
-		}
-
-		for (auto& vec : marray)
-		{
 			vec.clear();
 		}
 
