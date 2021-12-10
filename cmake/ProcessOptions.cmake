@@ -12,12 +12,17 @@ endmacro()
 macro(process_options)
   process_sort_names()
 
+  set(option_names "")
+  set(option_values "")
+
   foreach(x ${sort_names})
     set(BuildStr "build_")
     string(APPEND BuildStr ${x})
     string(TOUPPER ${BuildStr} BuildStr)
     message(VERBOSE "processing option for ${x} - Option Name: ${BuildStr}")
     option(${BuildStr} "Build the ${x} subproject" OFF)
+    list(APPEND option_names ${BuildStr})
+    list(APPEND option_values ${x})
   endforeach()
 endmacro()
 
