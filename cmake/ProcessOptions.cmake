@@ -10,8 +10,6 @@ macro(process_sort_names)
 endmacro()
 
 macro(process_options)
-  include(${PROJECT_SOURCE_DIR}/cmake/ProcessSortNames.cmake)
-
   process_sort_names()
 
   foreach(x ${sort_names})
