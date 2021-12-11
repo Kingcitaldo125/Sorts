@@ -9,7 +9,7 @@ using veciter = std::vector<int>::iterator;
 
 void print_vector(const std::vector<int>& mints)
 {
-	for (auto& i : mints)
+	for (const auto& i : mints)
 	{
 		cout << i << " ";
 	}
@@ -59,7 +59,7 @@ void merge_sort(veciter begin, veciter end)
 	if (std::distance(begin, end) <= 1)
 		return;
 
-	auto mid_point = begin + (std::distance(begin, end) / 2);
+	const auto mid_point = begin + (std::distance(begin, end) / 2);
 
 	merge_sort(begin, mid_point);
 	merge_sort(mid_point, end);
