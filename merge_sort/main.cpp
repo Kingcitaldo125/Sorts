@@ -7,37 +7,50 @@ using std::endl;
 
 using veciter = std::vector<int>::iterator;
 
+void print_vector(const std::vector<int>& mints)
+{
+	for (auto& i : mints)
+	{
+		cout << i << " ";
+	}
+	cout << "\n";
+}
+
 void merge(veciter begin, veciter mid, veciter end)
 {
-	bool swap = true;
-	while (swap)
+	std::vector<int> holder;
+
 	{
-		swap = false;
+		auto first = begin;
+		auto second = mid;
 
-		for (auto i = begin; i != mid - 1; ++i)
+		while (first < mid && second < end)
 		{
-			auto j = i + 1;
-			for (auto k = mid; k != end - 1; ++k)
+			if (*first <= *second)
 			{
-				auto l = k + 1;
-
-				if (*i > *j)
-				{
-					std::iter_swap(i,j);
-					swap = true;
-				}
-				if (*k > *l)
-				{
-					std::iter_swap(k, l);
-					swap = true;
-				}
-				if (*j > *k)
-				{
-					std::iter_swap(j, k);
-					swap = true;
-				}
+				holder.push_back(*first);
+				++first;
+			}
+			else
+			{
+				holder.push_back(*second);
+				++second;
 			}
 		}
+
+		for (const auto& i : std::vector<int>(first, mid))
+			holder.push_back(i);
+
+		for (const auto& i : std::vector<int>(second, end))
+			holder.push_back(i);
+	}
+
+	unsigned long i = 0;
+	for (const auto& h : holder)
+	{
+		auto elem = begin + i;
+		*elem = h;
+		++i;
 	}
 }
 
@@ -48,7 +61,7 @@ void merge_sort(veciter begin, veciter end)
 
 	auto mid_point = begin + (std::distance(begin, end) / 2);
 
-	merge_sort(begin, mid_point - 1);
+	merge_sort(begin, mid_point);
 	merge_sort(mid_point, end);
 	merge(begin, mid_point, end);
 }
@@ -59,11 +72,7 @@ int main()
 
 	merge_sort(mints.begin(), mints.end());
 
-	for (auto& i : mints)
-	{
-		cout << i << " ";
-	}
-	cout << "\n";
+	print_vector(mints);
 
 	cout << (std::is_sorted(mints.begin(), mints.end()) ? "Sorted" : "UnSorted") << endl;
 
