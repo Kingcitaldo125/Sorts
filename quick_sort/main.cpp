@@ -3,6 +3,7 @@
 #include <vector>
 
 using std::cout;
+using std::endl;
 
 void print_vec(const std::vector<int>& mints)
 {
@@ -13,7 +14,11 @@ void print_vec(const std::vector<int>& mints)
 	cout << "\n";
 }
 
-int partition(std::vector<int>& mvec, const int low, const int high)
+// Uses the Hoare partition scheme
+// https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
+// received the range condition checks from
+// https://www.youtube.com/watch?v=SLauY6PpjW4&ab_channel=HackerRank
+unsigned int partition(std::vector<int>& mvec, const int low, const int high)
 {
 	auto nleft_idx = low;
 	auto nright_idx = high;
@@ -22,11 +27,11 @@ int partition(std::vector<int>& mvec, const int low, const int high)
 
 	while (nleft_idx <= nright_idx)
 	{
-		while (auto nleft = mvec.at(nleft_idx) < pivot)
+		while (mvec.at(nleft_idx) < pivot)
 		{
 			++nleft_idx;
 		}
-		while (auto nright = mvec.at(nright_idx) > pivot)
+		while (mvec.at(nright_idx) > pivot)
 		{
 			--nright_idx;
 		}
@@ -45,6 +50,12 @@ int partition(std::vector<int>& mvec, const int low, const int high)
 	return nleft_idx;
 }
 
+// std::vector<T>::iterator does not work for two reasons:
+// 1. Passing in *begin() and *end() gets the whole range of elements, but dereffing *end is UB.
+// Only way to avoid this flavor of UB is:
+// 2. Trying to fix 1. by passing in *begin() and *end()-1; this accounts for all items except the last one,
+// which throws off the algorithm's efficacy
+// Indexing the vector (retrieving elements @ two indices) is really the only way to go
 void quick_sort_driver(std::vector<int>& mints, const int low, const int high)
 {
 	if (low >= high)
@@ -58,6 +69,8 @@ void quick_sort_driver(std::vector<int>& mints, const int low, const int high)
 	quick_sort_driver(mints, idx, high);
 }
 
+// Use wrapper function to truncate to just indices that map to an actual item
+// Avoids walking off the end and dereferencing an area of memory that's not ours (Avoid UB)
 void quick_sort(std::vector<int>& mints)
 {
 	quick_sort_driver(mints, 0, mints.size() - 1);
@@ -71,7 +84,7 @@ int main()
 
 	print_vec(mints);
 
-	cout << "is_sorted: " << std::boolalpha << std::is_sorted(mints.begin(), mints.end()) << "\n";
+	cout << "is_sorted: " << std::boolalpha << std::is_sorted(mints.begin(), mints.end()) << endl;
 
 	return 0;
 }
