@@ -4,3 +4,6 @@
 # build dirs
 bin/*
 build/*
+
+# VSCode directory
+.vscode/*
