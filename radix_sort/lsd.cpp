@@ -7,47 +7,43 @@
 using std::cout;
 using std::endl;
 
-std::vector<unsigned int>
-radix_sort_lsd(const std::vector<unsigned int> &vecc) {
-  std::array<std::vector<unsigned int>, 10> marray;
-  std::vector<unsigned int> mints(vecc.begin(), vecc.end());
+void radix_sort_lsd(std::vector<unsigned int> &mints) {
+	std::array<std::vector<unsigned int>, 10> marray;
 
-  marray.fill(std::vector<unsigned int>());
+	marray.fill(std::vector<unsigned int>());
 
-  int i = 0;
-  bool processed = true;
-  while (processed) {
-    processed = false;
-    for (auto &j : mints) {
-      auto j_str = std::to_string(j);
-      int size = static_cast<int>(j_str.size());
-      auto idx = size - (i + 1);
+	int i = 0;
+	bool processed = true;
+	while (processed) {
+		processed = false;
+		for (auto &j : mints) {
+			auto j_str = std::to_string(j);
+			int size = static_cast<int>(j_str.size());
+			auto idx = size - (i + 1);
 
-      if (idx < 0) {
-        marray.at(0).push_back(j);
-        continue;
-      }
+			if (idx < 0) {
+				marray.at(0).push_back(j);
+				continue;
+			}
 
-      processed = true;
-      auto char_int = std::stoi(std::string(1, j_str.at(idx)));
-      marray.at(char_int).push_back(j);
-    }
+			processed = true;
+			auto char_int = std::stoi(std::string(1, j_str.at(idx)));
+			marray.at(char_int).push_back(j);
+		}
 
-    if (!processed)
-      break;
+		if (!processed)
+			break;
 
-    mints.clear();
+		mints.clear();
 
-    for (auto &vec : marray) {
-      for (auto &v : vec)
-        mints.push_back(v);
-      vec.clear();
-    }
+		for (auto &vec : marray) {
+			for (auto &v : vec)
+				mints.push_back(v);
+			vec.clear();
+		}
 
-    ++i;
-  }
-
-  return mints;
+		++i;
+	}
 }
 
 int main() {
@@ -62,7 +58,7 @@ int main() {
       447,  1281, 408,  500,  549,  879, 1014, 1203, 951,  687,  311,  183,
       551,  614,  3,    500};
 
-  mints = radix_sort_lsd(mints);
+  radix_sort_lsd(mints);
 
   for (auto &v : mints) {
     cout << v << " ";
