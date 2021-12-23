@@ -25,10 +25,11 @@ macro(process_subdirs)
     message(DEBUG "sort_name: ${sort_name}")
     message(DEBUG "")
     if(BUILD_ALL)
-      add_subdirectory(${sort_name})
+      add_subdirectory(${sort_name} ${SORT_DIRECTORY}/${sort_name})
     elseif(${build_option_name})
-      add_subdirectory(${sort_name})
+      add_subdirectory(${sort_name} ${SORT_DIRECTORY}/${sort_name})
     endif()
   endforeach()
 
 endmacro()
+
