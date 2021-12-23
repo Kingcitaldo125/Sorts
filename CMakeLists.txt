@@ -1,14 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(Sorts VERSION 0.0.0 LANGUAGES CXX)
+project(Sorts VERSION 0.6.0 LANGUAGES CXX)
 
 option(BUILD_ALL "Build all of the sortation subprojects" ON)
 
-set(SORT_DIRECTORY "${CMAKE_BINARY_DIR}/sorts/")
-
-# Other options are in the form "BUILD_<sort_name_uppercase>"
-# where the "<sort_name_uppercase>" is the name of the sort's parent folder/directory, uppercase.
-# e.g. Selection Sort will be "BUILD_SELECTION_SORT" where it's folder is named "selection_sort"
-include(${PROJECT_SOURCE_DIR}/cmake/Process.cmake)
-process()
+add_subdirectory(sorts)
 

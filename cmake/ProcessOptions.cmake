@@ -1,5 +1,7 @@
 macro(process_sort_names)
-  file(GLOB file_listing LIST_DIRECTORIES true RELATIVE ${CMAKE_SOURCE_DIR} *sort/)
+  message(DEBUG "Processing Sort directory ${SORT_SRC_DIR}")
+
+  file(GLOB file_listing LIST_DIRECTORIES true RELATIVE ${SORT_SRC_DIR} *sort/)
 
   set(sort_names "")
 
