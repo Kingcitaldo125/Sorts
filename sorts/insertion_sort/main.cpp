@@ -23,7 +23,7 @@ void insertion_sort(std::vector<int>::iterator begin,
     auto i_cpy = i;
 
     while (*i_cpy < *first) {
-      if (first < begin)
+      if (first <= begin)
         break;
 
       std::iter_swap(i_cpy--, first--);
