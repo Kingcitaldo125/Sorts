@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <map>
 #include <vector>
 
 using std::cout;
@@ -13,18 +12,30 @@ void print_vector(const std::vector<int> &mints) {
   cout << '\n';
 }
 
-void counting_sort(std::vector<int> &mints) {
-  std::map<int, int> counts;
+void counting_sort(std::vector<int> &vec) {
+  std::vector<std::pair<int, int>> holder;
 
-  for (const auto &i : mints) {
-    counts.insert(
-        {i, static_cast<int>(std::count(mints.begin(), mints.end(), i))});
+  const auto max = *std::max_element(vec.begin(), vec.end());
+  holder.reserve(max);
+
+  for (int i = 0; i < max; ++i) {
+    holder.emplace_back(std::make_pair(i, 0));
   }
 
-  mints.clear();
-  for (auto miter = counts.begin(); miter != counts.end(); ++miter) {
-    for (auto i = 0; i < miter->second; ++i) {
-      mints.push_back(miter->first);
+  for (const auto &v : vec) {
+    auto count = static_cast<int>(std::count(vec.begin(), vec.end(), v));
+    holder.at(v - 1).second = count;
+  }
+
+  auto idx = vec.begin();
+  for (auto &pair : holder) {
+    const auto &second = pair.second;
+    if (second) {
+      const auto &first = pair.first;
+      for (auto i = 0; i < second; ++i) {
+        *idx = first + 1;
+        ++idx;
+      }
     }
   }
 }
