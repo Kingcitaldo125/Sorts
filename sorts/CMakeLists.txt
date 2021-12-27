@@ -1,8 +1,8 @@
 set(SORT_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(SORT_BIN_DIR "${CMAKE_BINARY_DIR}/sorts")
 
-message("SORT_SRC_DIR ${SORT_SRC_DIR}")
-message("SORT_BIN_DIR ${SORT_BIN_DIR}")
+message(DEBUG "SORT_SRC_DIR ${SORT_SRC_DIR}")
+message(DEBUG "SORT_BIN_DIR ${SORT_BIN_DIR}")
 
 # Other options are in the form "BUILD_<sort_name_uppercase>"
 # where the "<sort_name_uppercase>" is the name of the sort's parent folder/directory, uppercase.
