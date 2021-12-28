@@ -4,15 +4,10 @@
 #include <random>
 #include <vector>
 
+#include "SortUtils.hpp"
+
 using std::cout;
 using std::endl;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
 
 unsigned long bogo_sort(std::vector<int>::iterator begin,
                         std::vector<int>::iterator end) {
@@ -35,10 +30,8 @@ int main() {
 
   cout << "Took '" << bogo_sort(mints.begin(), mints.end()) << "' iterations\n";
 
-  print_vector(mints);
-
-  cout << "is_sorted: " << std::boolalpha
-       << std::is_sorted(mints.begin(), mints.end()) << endl;
+  SortUtils::print_vector(mints);
+  SortUtils::print_sorted<int>(mints.begin(), mints.end(), "mints");
 
   return 0;
 }

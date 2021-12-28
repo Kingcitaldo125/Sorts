@@ -11,11 +11,11 @@ inline void print_vector(const std::vector<int> &mints) {
   cout << "\n";
 }
 
-void flip(std::vector<int>::iterator begin, std::vector<int>::iterator iter) {
+inline void flip(std::vector<int>::iterator begin, std::vector<int>::iterator iter) {
   std::reverse(begin, iter + 1);
 }
 
-void pancake_sort(std::vector<int>::iterator begin,
+inline void pancake_sort(std::vector<int>::iterator begin,
                   std::vector<int>::iterator end) {
   for (auto i = end; i != begin; --i) {
     flip(begin, std::max_element(begin, i));

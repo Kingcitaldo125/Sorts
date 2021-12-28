@@ -5,5 +5,8 @@
 bin/*
 build/*
 
+# lib dirs
+lib/*
+
 # VSCode directory
 .vscode/*

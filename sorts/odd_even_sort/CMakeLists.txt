@@ -1,1 +1,7 @@
-add_executable(odd_even main.cpp)
+set(TARGET_NAME odd_even)
+
+add_executable(${TARGET_NAME} main.cpp)
+
+target_link_libraries(${TARGET_NAME} PRIVATE sort_utils)
+
+target_include_directories(${TARGET_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/utils)
