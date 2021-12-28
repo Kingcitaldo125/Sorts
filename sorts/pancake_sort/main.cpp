@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include "SortUtils.hpp"
+
 using std::cout;
 
 inline void print_vector(const std::vector<int> &mints) {
@@ -31,10 +33,8 @@ int main() {
 
   pancake_sort(mints.begin(), mints.end());
 
-  print_vector(mints);
-
-  cout << "is_sorted: " << std::boolalpha
-       << std::is_sorted(mints.begin(), mints.end()) << std::endl;
+  SortUtils::print_vector(mints);
+  SortUtils::print_sorted<int>(mints.begin(), mints.end(), "mints");
 
   return 0;
 }

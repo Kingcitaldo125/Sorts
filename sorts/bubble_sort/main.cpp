@@ -32,7 +32,7 @@ int main() {
     bubble_sort(mints.begin(), mints.end());
 
     SortUtils::print_vector(mints);
-    SortUtils::print_sorted<int>(mints.begin(), mints.end());
+    SortUtils::print_sorted<int>(mints.begin(), mints.end(), "mints");
 
     return 0;
 }

@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "SortUtils.hpp"
+
 using std::cout;
 using std::endl;
 
@@ -68,10 +70,8 @@ int main() {
 
   mints = radix_sort_msd(mints);
 
-  print_vec(mints);
-
-  cout << "is_sorted: " << std::boolalpha
-       << std::is_sorted(mints.begin(), mints.end()) << endl;
+  SortUtils::print_vector(mints);
+  SortUtils::print_sorted<unsigned int>(mints.begin(), mints.end(), "mints");
 
   return 0;
 }
