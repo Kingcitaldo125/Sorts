@@ -12,32 +12,26 @@ void print_vector(const std::vector<int> &mints) {
   cout << '\n';
 }
 
-void counting_sort(std::vector<int> &vec) {
-  std::vector<std::pair<int, int>> holder;
-
+std::vector<int> counting_sort(std::vector<int> &vec) {
   const auto max = *std::max_element(vec.begin(), vec.end());
-  holder.reserve(max);
 
-  for (int i = 0; i < max; ++i) {
-    holder.emplace_back(std::make_pair(i, 0));
+  std::vector<int> counts(max + 1, 0);
+  std::vector<int> outp(vec.size(), 0);
+
+  for (auto v : vec) {
+    ++counts.at(v);
   }
 
-  for (const auto &v : vec) {
-    auto count = static_cast<int>(std::count(vec.begin(), vec.end(), v));
-    holder.at(v - 1).second = count;
+  for (auto i = counts.begin() + 1; i != counts.end(); ++i) {
+    *i += *(i - 1);
   }
 
-  auto idx = vec.begin();
-  for (auto &pair : holder) {
-    const auto &second = pair.second;
-    if (second) {
-      const auto &first = pair.first;
-      for (auto i = 0; i < second; ++i) {
-        *idx = first + 1;
-        ++idx;
-      }
-    }
+  for (auto i = vec.rbegin(); i != vec.rend(); ++i) {
+    --counts.at(*i);
+    outp.at(counts.at(*i)) = *i;
   }
+
+  return outp;
 }
 
 int main() {
@@ -49,7 +43,7 @@ int main() {
       68, 57, 30, 88, 26, 76, 57, 75, 89, 85, 59, 27, 19, 11, 99, 2,  91,
       57, 21, 39, 73, 13, 47, 1,  48, 75, 38, 93, 57, 32, 16, 87};
 
-  counting_sort(mints);
+  mints = counting_sort(mints);
 
   print_vector(mints);
 
