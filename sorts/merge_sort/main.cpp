@@ -70,8 +70,8 @@ int main() {
 
   print_vector(mints);
 
-  cout << (std::is_sorted(mints.begin(), mints.end()) ? "Sorted" : "UnSorted")
-       << endl;
+  cout << "is_sorted: " << std::boolalpha
+       << std::is_sorted(mints.begin(), mints.end()) << endl;
 
   return 0;
 }

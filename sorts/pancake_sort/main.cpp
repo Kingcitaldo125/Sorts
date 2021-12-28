@@ -12,11 +12,7 @@ inline void print_vector(const std::vector<int> &mints) {
 }
 
 void flip(std::vector<int>::iterator begin, std::vector<int>::iterator iter) {
-  std::vector<int> tvec(begin, iter + 1);
-  tvec = std::vector<int>(tvec.rbegin(), tvec.rend());
-  auto k = -1;
-  for (auto i = begin; i <= iter; ++i)
-    *i = tvec.at(++k);
+  std::reverse(begin, iter + 1);
 }
 
 void pancake_sort(std::vector<int>::iterator begin,
@@ -37,9 +33,8 @@ int main() {
 
   print_vector(mints);
 
-  cout << "is_sorted: "
-       << (std::is_sorted(mints.begin(), mints.end()) ? "Sorted" : "UnSorted")
-       << std::endl;
+  cout << "is_sorted: " << std::boolalpha
+       << std::is_sorted(mints.begin(), mints.end()) << std::endl;
 
   return 0;
 }

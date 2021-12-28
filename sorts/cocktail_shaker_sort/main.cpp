@@ -8,7 +8,7 @@ using std::endl;
 using siter = std::vector<int>::iterator;
 
 void print_vector(const std::vector<int> &mints) {
-  for (auto &v : mints) {
+  for (const auto &v : mints) {
     cout << v << " ";
   }
   cout << '\n';
@@ -19,10 +19,11 @@ void cocktail_shaker_sort(siter begin, siter end) {
   auto tail = end;
   unsigned int passes = 0;
   bool swap = true;
+
   while (swap) {
     swap = false;
     for (auto i = head; i != tail - (passes + 1); ++i) {
-      auto second = i + 1;
+      const auto second = i + 1;
       if (*i > *second) {
         std::iter_swap(i, second);
         swap = true;
@@ -30,7 +31,7 @@ void cocktail_shaker_sort(siter begin, siter end) {
     }
 
     for (auto i = tail - (passes + 2); i != head; --i) {
-      auto second = i - 1;
+      const auto second = i - 1;
       if (*i < *second) {
         std::iter_swap(i, second);
         swap = true;

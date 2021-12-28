@@ -4,16 +4,21 @@
 
 using std::cout;
 
+void print_vector(const std::vector<int> &mints) {
+  for (const auto &v : mints) {
+    cout << v << " ";
+  }
+  cout << '\n';
+}
+
 void heapify(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
-  auto min = std::min_element(begin, end);
+  const auto minmax = std::minmax_element(begin, end);
 
-  if (*begin != *min)
-    std::iter_swap(begin, min);
+  if (*begin != *minmax.first)
+    std::iter_swap(begin, minmax.first);
 
-  auto max = std::max_element(begin, end);
-
-  if (*max != *(end - 1))
-    std::iter_swap(max, end - 1);
+  if (*minmax.second != *(end - 1))
+    std::iter_swap(minmax.second, end - 1);
 }
 
 void build_max_heap(std::vector<int>::iterator begin,
@@ -21,7 +26,7 @@ void build_max_heap(std::vector<int>::iterator begin,
   if (std::distance(begin, end) == 1)
     return;
 
-  auto itm = std::max_element(begin, end);
+  const auto itm = std::max_element(begin, end);
   if (*begin != *itm)
     std::iter_swap(begin, itm);
 
@@ -47,14 +52,10 @@ int main() {
 
   heap_sort(mints.begin(), mints.end());
 
-  for (auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
+  print_vector(mints);
 
-  cout << "is_sorted: "
-       << (std::is_sorted(mints.begin(), mints.end()) ? "Sorted" : "UnSorted")
-       << std::endl;
+  cout << "is_sorted: " << std::boolalpha
+       << std::is_sorted(mints.begin(), mints.end()) << std::endl;
 
   return 0;
 }

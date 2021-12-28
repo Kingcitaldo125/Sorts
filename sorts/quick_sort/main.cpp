@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 void print_vec(const std::vector<int> &mints) {
-  for (auto &i : mints) {
+  for (const auto &i : mints) {
     cout << i << " ";
   }
   cout << "\n";
@@ -20,7 +20,7 @@ unsigned int partition(std::vector<int> &mvec, const int low, const int high) {
   auto nleft_idx = low;
   auto nright_idx = high;
 
-  auto pivot = mvec.at((high + low) / 2);
+  const auto pivot = mvec.at((high + low) / 2);
 
   while (nleft_idx <= nright_idx) {
     while (mvec.at(nleft_idx) < pivot) {

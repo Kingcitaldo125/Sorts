@@ -7,6 +7,13 @@
 using std::cout;
 using std::endl;
 
+void print_vec(const std::vector<unsigned int> &mints) {
+  for (const auto &i : mints) {
+    cout << i << " ";
+  }
+  cout << "\n";
+}
+
 void radix_sort_lsd(std::vector<unsigned int> &mints) {
   std::array<std::vector<unsigned int>, 10> marray;
 
@@ -18,8 +25,8 @@ void radix_sort_lsd(std::vector<unsigned int> &mints) {
     processed = false;
     for (auto &j : mints) {
       auto j_str = std::to_string(j);
-      int size = static_cast<int>(j_str.size());
-      auto idx = size - (iter_index + 1);
+      const int size = static_cast<int>(j_str.size());
+      const auto idx = size - (iter_index + 1);
 
       if (idx < 0) {
         marray.at(0).push_back(j);
@@ -27,8 +34,7 @@ void radix_sort_lsd(std::vector<unsigned int> &mints) {
       }
 
       processed = true;
-      auto char_int = std::stoi(std::string(1, j_str.at(idx)));
-      marray.at(char_int).push_back(j);
+      marray.at(std::stoi(std::string(1, j_str.at(idx)))).push_back(j);
     }
 
     if (!processed)
@@ -60,12 +66,8 @@ int main() {
 
   radix_sort_lsd(mints);
 
-  for (auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
+  print_vec(mints);
 
-  cout << mints.size() << " items\n";
   cout << "is_sorted: " << std::boolalpha
        << std::is_sorted(mints.begin(), mints.end()) << endl;
 

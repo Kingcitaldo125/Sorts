@@ -8,7 +8,7 @@ using std::cout;
 using std::endl;
 
 void print_vector(const std::vector<int> &mints) {
-  for (auto &v : mints) {
+  for (const auto &v : mints) {
     cout << v << " ";
   }
   cout << '\n';

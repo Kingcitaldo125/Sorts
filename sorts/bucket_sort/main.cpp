@@ -7,7 +7,7 @@
 using std::cout;
 
 inline void print_vector(const std::vector<int> &vec) {
-  for (auto &i : vec) {
+  for (const auto &i : vec) {
     cout << i << " ";
   }
   cout << "\n";
@@ -15,7 +15,7 @@ inline void print_vector(const std::vector<int> &vec) {
 
 // Selection sort
 inline void next_sort(std::vector<int> &vec) {
-  auto end = vec.end();
+  const auto end = vec.end();
   for (auto i = vec.begin(); i != end; ++i) {
     std::iter_swap(i, std::min_element(i, end));
   }
@@ -26,13 +26,13 @@ template <size_t N_BUCKETS> void bucket_sort(std::vector<int> &arr) {
 
   int MAX_KEY = 1;
 
-  for (auto &i : arr) {
+  for (const auto &i : arr) {
     MAX_KEY = std::max(i, MAX_KEY);
   }
   ++MAX_KEY;
 
   for (unsigned i = 0; i < arr.size(); ++i) {
-    auto buck_idx = N_BUCKETS * arr.at(i) / MAX_KEY;
+    const auto buck_idx = N_BUCKETS * arr.at(i) / MAX_KEY;
     buckets.at(buck_idx).emplace_back(arr.at(i));
   }
 
@@ -40,7 +40,7 @@ template <size_t N_BUCKETS> void bucket_sort(std::vector<int> &arr) {
   for (auto &bucket : buckets) {
     next_sort(bucket);
 
-    for (auto &b : bucket)
+    for (const auto &b : bucket)
       arr.push_back(b);
   }
 }
@@ -56,9 +56,8 @@ int main() {
 
   print_vector(mints);
 
-  cout << "is_sorted: "
-       << (std::is_sorted(mints.begin(), mints.end()) ? "Sorted" : "UnSorted")
-       << std::endl;
+  cout << "is_sorted: " << std::boolalpha
+       << std::is_sorted(mints.begin(), mints.end()) << std::endl;
 
   return 0;
 }

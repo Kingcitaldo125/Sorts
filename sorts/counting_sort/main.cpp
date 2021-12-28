@@ -3,10 +3,9 @@
 #include <vector>
 
 using std::cout;
-using std::endl;
 
 void print_vector(const std::vector<int> &mints) {
-  for (auto &v : mints) {
+  for (const auto &v : mints) {
     cout << v << " ";
   }
   cout << '\n';
@@ -18,7 +17,7 @@ std::vector<int> counting_sort(std::vector<int> &vec) {
   std::vector<int> counts(max + 1, 0);
   std::vector<int> outp(vec.size(), 0);
 
-  for (auto v : vec) {
+  for (const auto &v : vec) {
     ++counts.at(v);
   }
 
@@ -48,7 +47,7 @@ int main() {
   print_vector(mints);
 
   cout << "is_sorted: " << std::boolalpha
-       << std::is_sorted(mints.begin(), mints.end()) << endl;
+       << std::is_sorted(mints.begin(), mints.end()) << std::endl;
 
   return 0;
 }

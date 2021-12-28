@@ -7,6 +7,13 @@
 using std::cout;
 using std::endl;
 
+void print_vec(const std::vector<unsigned int> &mints) {
+  for (const auto &i : mints) {
+    cout << i << " ";
+  }
+  cout << "\n";
+}
+
 std::vector<unsigned int> radix_sort_msd(const std::vector<unsigned int> &mints,
                                          const int idx = 0) {
   std::array<std::vector<unsigned int>, 10> holder;
@@ -16,13 +23,13 @@ std::vector<unsigned int> radix_sort_msd(const std::vector<unsigned int> &mints,
     return mints;
 
   if (std::all_of(mints.begin(), mints.end(),
-                  [&](auto &i) { return i == mints.at(0); }))
+                  [&](const auto &i) { return i == mints.at(0); }))
     return mints;
 
   std::size_t largest_size =
       std::to_string(*std::max_element(mints.begin(), mints.end())).size();
 
-  for (auto &m : mints) {
+  for (const auto &m : mints) {
     auto mstr = std::to_string(m);
     auto mstr_size = mstr.size();
 
@@ -61,12 +68,8 @@ int main() {
 
   mints = radix_sort_msd(mints);
 
-  for (auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
+  print_vec(mints);
 
-  cout << mints.size() << " items\n";
   cout << "is_sorted: " << std::boolalpha
        << std::is_sorted(mints.begin(), mints.end()) << endl;
 

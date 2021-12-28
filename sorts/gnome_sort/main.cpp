@@ -4,6 +4,13 @@
 
 using std::cout;
 
+void print_vector(const std::vector<int> &mints) {
+  for (const auto &v : mints) {
+    cout << v << " ";
+  }
+  cout << '\n';
+}
+
 void gnome_sort(std::vector<int>::iterator begin,
                 std::vector<int>::iterator end) {
   auto i = begin + 1;
@@ -29,14 +36,10 @@ int main() {
 
   gnome_sort(mints.begin(), mints.end());
 
-  for (auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-  
-  cout << "is_sorted: "
-       << (std::is_sorted(mints.begin(), mints.end()) ? "Sorted" : "UnSorted")
-       << std::endl;
+  print_vector(mints);
+
+  cout << "is_sorted: " << std::boolalpha
+       << std::is_sorted(mints.begin(), mints.end()) << std::endl;
 
   return 0;
 }

@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 void print_vector(const std::vector<int> &mints) {
-  for (auto &v : mints) {
+  for (const auto &v : mints) {
     cout << v << " ";
   }
   cout << '\n';
@@ -17,9 +17,9 @@ void stooge_sort_base(std::vector<int> &vec, const unsigned int j,
   if (vec.at(i) > vec.at(j))
     std::swap(vec.at(i), vec.at(j));
 
-  auto partition_val = (j - i + 1);
+  const auto partition_val = (j - i + 1);
   if (partition_val > 2) {
-    auto t = partition_val / 3;
+    const auto t = partition_val / 3;
     stooge_sort_base(vec, j - t, i);
     stooge_sort_base(vec, j, i + t);
     stooge_sort_base(vec, j - t, i);

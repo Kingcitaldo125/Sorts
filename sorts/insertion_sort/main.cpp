@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 void print_vector(const std::vector<int> &mints) {
-  for (auto &v : mints) {
+  for (const auto &v : mints) {
     cout << v << " ";
   }
   cout << '\n';
@@ -15,7 +15,7 @@ void print_vector(const std::vector<int> &mints) {
 void insertion_sort(std::vector<int>::iterator begin,
                     std::vector<int>::iterator end) {
   // need at least 2 elements in vector to perform swaps
-  if (std::distance(begin, end) == 1)
+  if (std::distance(begin, end) <= 1)
     return;
 
   for (auto i = begin + 1; i != end; ++i) {
@@ -23,10 +23,13 @@ void insertion_sort(std::vector<int>::iterator begin,
     auto i_cpy = i;
 
     while (*i_cpy < *first) {
-      if (first <= begin)
+      if (first < begin)
         break;
 
-      std::iter_swap(i_cpy--, first--);
+      std::iter_swap(i_cpy, first);
+
+      --i_cpy;
+      --first;
     }
   }
 }

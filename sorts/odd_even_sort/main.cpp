@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 void print_vector(const std::vector<int> &mints) {
-  for (auto &v : mints) {
+  for (const auto &v : mints) {
     cout << v << " ";
   }
   cout << '\n';
@@ -18,7 +18,7 @@ void odd_even_sort(std::vector<int>::iterator begin,
   while (swap) {
     swap = false;
     for (auto i = begin; i < end - 1; i += 2) {
-      auto second = i + 1;
+      const auto second = i + 1;
       if (*i > *second) {
         std::iter_swap(i, second);
         swap = true;
@@ -26,7 +26,7 @@ void odd_even_sort(std::vector<int>::iterator begin,
     }
 
     for (auto i = begin + 1; i < end - 1; i += 2) {
-      auto second = i + 1;
+      const auto second = i + 1;
       if (*i > *second) {
         std::iter_swap(i, second);
         swap = true;
