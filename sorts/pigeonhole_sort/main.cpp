@@ -4,16 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vec(const std::vector<int> &mints) {
-  for (const auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
-
 void pigeonhole_sort(std::vector<int>::iterator begin,
                      std::vector<int>::iterator end) {
   auto minmax = std::minmax_element(begin, end);

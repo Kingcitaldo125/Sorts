@@ -6,15 +6,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-
-inline void print_vector(const std::vector<int> &vec) {
-  for (const auto &i : vec) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
-
 // Selection sort
 inline void next_sort(std::vector<int> &vec) {
   const auto end = vec.end();

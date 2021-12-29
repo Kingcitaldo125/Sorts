@@ -6,16 +6,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vec(const std::vector<unsigned int> &mints) {
-  for (const auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
-
 std::vector<unsigned int> radix_sort_msd(const std::vector<unsigned int> &mints,
                                          const int idx = 0) {
   std::array<std::vector<unsigned int>, 10> holder;

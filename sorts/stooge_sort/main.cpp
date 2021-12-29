@@ -4,16 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
-
 void stooge_sort_base(std::vector<int> &vec, const unsigned int j,
                       const unsigned int i = 0) {
   if (vec.at(i) > vec.at(j))

@@ -4,15 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
-
 std::vector<int> counting_sort(std::vector<int> &vec) {
   const auto max = *std::max_element(vec.begin(), vec.end());
 

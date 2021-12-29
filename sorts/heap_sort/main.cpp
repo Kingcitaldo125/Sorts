@@ -4,15 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
-
 void heapify(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
   const auto minmax = std::minmax_element(begin, end);
 

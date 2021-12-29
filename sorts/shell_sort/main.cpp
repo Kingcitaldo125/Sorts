@@ -4,16 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
-
 void d_sort(std::vector<int>::iterator begin, std::vector<int>::iterator end,
             const unsigned int gap) {
   // need at least 2 elements in vector to perform swaps

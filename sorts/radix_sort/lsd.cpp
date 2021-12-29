@@ -6,16 +6,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vec(const std::vector<unsigned int> &mints) {
-  for (const auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
-
 void radix_sort_lsd(std::vector<unsigned int> &mints) {
   std::array<std::vector<unsigned int>, 10> marray;
 

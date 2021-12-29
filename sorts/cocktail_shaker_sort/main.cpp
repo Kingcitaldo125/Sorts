@@ -4,17 +4,7 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
 using siter = std::vector<int>::iterator;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
 
 void cocktail_shaker_sort(siter begin, siter end) {
   auto head = begin;

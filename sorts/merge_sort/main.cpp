@@ -4,17 +4,7 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
 using veciter = std::vector<int>::iterator;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
 
 void merge(veciter begin, veciter mid, veciter end) {
   std::vector<int> holder;

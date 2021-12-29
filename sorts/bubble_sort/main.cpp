@@ -4,9 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
 void bubble_sort(std::vector<int>::iterator begin,
     std::vector<int>::iterator end) {
     bool swap = true;

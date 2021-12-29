@@ -7,7 +7,6 @@
 #include "SortUtils.hpp"
 
 using std::cout;
-using std::endl;
 
 unsigned long bogo_sort(std::vector<int>::iterator begin,
                         std::vector<int>::iterator end) {

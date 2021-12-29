@@ -4,15 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-
-inline void print_vector(const std::vector<int> &mints) {
-  for (const auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
-
 inline void flip(std::vector<int>::iterator begin, std::vector<int>::iterator iter) {
   std::reverse(begin, iter + 1);
 }

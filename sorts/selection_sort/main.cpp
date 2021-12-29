@@ -4,16 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vector(const std::vector<int> &mints) {
-  for (const auto &v : mints) {
-    cout << v << " ";
-  }
-  cout << '\n';
-}
-
 inline void selection_sort(std::vector<int>::iterator begin,
                            std::vector<int>::iterator end) {
   for (auto i = begin; i != end; ++i) {

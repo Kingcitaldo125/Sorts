@@ -4,16 +4,6 @@
 
 #include "SortUtils.hpp"
 
-using std::cout;
-using std::endl;
-
-void print_vec(const std::vector<int> &mints) {
-  for (const auto &i : mints) {
-    cout << i << " ";
-  }
-  cout << "\n";
-}
-
 // Uses the Hoare partition scheme
 // https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
 // Received the range condition checks from
