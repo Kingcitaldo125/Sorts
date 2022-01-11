@@ -14,6 +14,10 @@ void heapify(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
     std::iter_swap(minmax.second, end - 1);
 }
 
+// OPTIMIZE:
+// Replace selection sort functionality with functionality
+// that checks each parent node against its children
+// (check parent value to ensure it's larger than its children's values
 void build_max_heap(std::vector<int>::iterator begin,
                     std::vector<int>::iterator end) {
   if (std::distance(begin, end) == 1)
