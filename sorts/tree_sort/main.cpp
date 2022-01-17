@@ -1,10 +1,7 @@
-#include <iostream>
-
 #include "SortUtils.hpp"
 #include "Tree.hpp"
 
-int main()
-{
+int main() {
   std::vector<int> mints{
       63, 2,  8,  55, 11, 40, 97, 98, 16, 75, 93, 33, 66, 75, 93, 13, 26,
       30, 65, 15, 31, 54, 58, 52, 72, 66, 30, 19, 72, 91, 72, 2,  36, 2,
