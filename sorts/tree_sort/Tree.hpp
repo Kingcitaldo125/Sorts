@@ -3,6 +3,9 @@
 #include <memory>
 #include <vector>
 
+class Tree;
+
+// Struct template for the Tree class
 template<typename T>
 struct Node
 {
@@ -14,6 +17,7 @@ struct Node
   T payload;
 };
 
+// BST data structure
 class Tree
 {
 public:
@@ -23,10 +27,12 @@ public:
   explicit Tree(Node<int>* n);
   explicit Tree(const std::vector<int>& ns);
 
+  // Bonus: Implement copy constructor for the tree class
   Tree(const Tree& t) = delete;
   virtual ~Tree();
   
   void add(const int n, Node<int>* root);
+  // In-order
   void traverse(Node<int>* root);
 
   Node<int>* get_root() const;
