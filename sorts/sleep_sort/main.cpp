@@ -31,18 +31,16 @@ std::vector<int> sleep_sort(const std::vector<int> &mvec) {
 }
 
 int main() {
-  std::vector<int> mints{32,  867, 661, 347, 91,  238, 739, 820, 20,  838,
-                         796, 550, 803, 240, 327, 81,  896, 810, 151, 281,
-                         886, 106, 660, 45,  787, 674, 20,  120, 437, 25,
-                         930, 751, 3,   145, 674, 362, 809, 517, 418, 469,
-                         689, 738, 623, 842, 643, 211, 308, 13,  792, 790};
+  std::vector<int> values{32,  867, 661, 347, 91,  238, 739, 820, 20,  838,
+                          796, 550, 803, 240, 327, 81,  896, 810, 151, 281,
+                          886, 106, 660, 45,  787, 674, 20,  120, 437, 25,
+                          930, 751, 3,   145, 674, 362, 809, 517, 418, 469,
+                          689, 738, 623, 842, 643, 211, 308, 13,  792, 790};
 
-  const auto res = sleep_sort(std::move(mints));
+  const auto mints = sleep_sort(std::move(values));
 
-  for (const auto &i : res) {
-    std::cout << i << " ";
-  }
-  std::cout << "\n";
+  SortUtils::print_vector(mints);
+  SortUtils::print_sorted<int>(mints.begin(), mints.end(), "mints");
 
   return 0;
 }
