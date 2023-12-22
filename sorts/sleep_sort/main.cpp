@@ -5,6 +5,8 @@
 #include <thread>
 #include <vector>
 
+#include "SortUtils.hpp"
+
 static std::mutex mtx;
 
 void corot(std::vector<int> &mints, const int N) {
@@ -37,7 +39,7 @@ int main() {
                           930, 751, 3,   145, 674, 362, 809, 517, 418, 469,
                           689, 738, 623, 842, 643, 211, 308, 13,  792, 790};
 
-  const auto mints = sleep_sort(std::move(values));
+  auto mints = sleep_sort(std::move(values));
 
   SortUtils::print_vector(mints);
   SortUtils::print_sorted<int>(mints.begin(), mints.end(), "mints");
