@@ -81,7 +81,7 @@ std::vector<int> radix_sort_msd(std::vector<int> mints) {
 }
 
 int main() {
-  std::vector<unsigned int> mints{
+  std::vector<int> mints{
       684,  126,  635,  1051, 491,  712, 676,  733,  833,  418,  133,  113,
       1324, 571,  604,  958,  1455, 455, 109,  1141, 624,  797,  1204, 1401,
       470,  534,  1172, 87,   919,  758, 1082, 1361, 197,  1353, 1498, 1206,
@@ -95,7 +95,7 @@ int main() {
   mints = radix_sort_msd(mints);
 
   SortUtils::print_vector(mints);
-  SortUtils::print_sorted<unsigned int>(mints.begin(), mints.end(), "mints");
+  SortUtils::print_sorted<int>(mints.begin(), mints.end(), "mints");
 
   return 0;
 }
