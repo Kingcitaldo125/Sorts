@@ -2,20 +2,17 @@
 #include <iostream>
 #include <vector>
 
-void stalin_sort(std::vector<int>& mints)
-{
-    while(!std::is_sorted(mints.begin(), mints.end()))
-    {
-        std::vector<int> holder;
-        for(auto it = mints.begin(); it < mints.end() - 1; ++it)
-        {
-            auto second = it + 1;
-            if (*it > *second)
-                continue;
-            holder.push_back(*it);
-        }
-        mints = std::move(holder);
+void stalin_sort(std::vector<int> &mints) {
+  while (!std::is_sorted(mints.begin(), mints.end())) {
+    std::vector<int> holder;
+    for (auto it = mints.begin(); it < mints.end() - 1; ++it) {
+      auto second = it + 1;
+      if (*it > *second)
+        continue;
+      holder.push_back(*it);
     }
+    mints = std::move(holder);
+  }
 }
 
 int main() {
