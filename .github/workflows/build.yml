@@ -22,4 +22,4 @@ jobs:
         run: ./clean_all.sh
 
       - name: Build all
-        run: ./build_all.sh
+        run: ./build_all.sh build
