@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include "SortUtils.hpp"
+
 void stalin_sort(std::vector<int> &mints) {
   while (!std::is_sorted(mints.begin(), mints.end())) {
     std::vector<int> holder;
